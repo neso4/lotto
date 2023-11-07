@@ -11,7 +11,7 @@ public class Lottos {
     }
 
     public Lotto createLotto(NumberPickingStrategy numberPickingStrategy) {
-        Lotto lotto = new Lotto(numberPickingStrategy.pickNumbers());
+        Lotto lotto = new Lotto(numberPickingStrategy.pickLottoNumbers());
         lottos.add(lotto);
         return lotto;
     }
