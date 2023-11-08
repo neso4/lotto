@@ -1,6 +1,7 @@
-package lotto.domain;
+package lotto.service;
 
 import java.util.List;
+import lotto.domain.WinningLotto;
 import lotto.utils.ParseUtil;
 import lotto.utils.StringUtil;
 import lotto.utils.ValidationUtil;
