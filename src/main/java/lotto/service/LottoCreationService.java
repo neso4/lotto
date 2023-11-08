@@ -2,7 +2,7 @@ package lotto.service;
 
 import java.util.ArrayList;
 import java.util.List;
-import lotto.NumberPickingStrategy;
+import lotto.controller.NumberPickingStrategy;
 import lotto.domain.Lotto;
 import lotto.domain.Lottos;
 import lotto.utils.StringUtil;

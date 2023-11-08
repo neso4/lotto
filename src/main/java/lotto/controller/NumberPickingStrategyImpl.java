@@ -1,8 +1,8 @@
-package lotto;
+package lotto.controller;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.List;
-import lotto.NumberPickingStrategy;
+import lotto.controller.NumberPickingStrategy;
 
 public class NumberPickingStrategyImpl implements NumberPickingStrategy {
     @Override
