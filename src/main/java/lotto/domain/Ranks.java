@@ -1,8 +1,11 @@
 package lotto.domain;
 
+import java.util.Arrays;
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Objects;
+import java.util.stream.Stream;
 
 public class Ranks {
     private final List<Rank> ranks;
@@ -16,6 +19,13 @@ public class Ranks {
 
     public Reward toTotalReward() {
         return new Reward(Rank.calcReward(ranks));
+    }
+
+    public List<RankCountPair> getRankCountPairs() {
+        return Stream.of(Rank.FIRST, Rank.SECOND, Rank.THIRD, Rank.FOURTH, Rank.FIFTH)
+                .map(rankToCompare -> new RankCountPair(rankToCompare, (int) ranks.stream().filter(rank -> rank == rankToCompare)
+                        .count()))
+                .toList();
     }
 
     public List<Rank> getRanks() {
