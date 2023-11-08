@@ -2,7 +2,8 @@ package lotto.domain;
 
 import java.util.ArrayList;
 import java.util.List;
-import lotto.domain.dto.LottoInfos;
+import lotto.dto.LottoInfos;
+import lotto.utils.StringUtil;
 import lotto.utils.ValidationUtil;
 
 public class LottoService {
@@ -39,7 +40,7 @@ public class LottoService {
     }
 
     private int toLottoCount(String money) {
-        return Integer.parseInt(money) / 1000;
+        return StringUtil.divideByOneThousand(money);
     }
 
     private void validate(String money) {
