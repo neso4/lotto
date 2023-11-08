@@ -8,6 +8,7 @@ import lotto.utils.ValidationUtil;
 
 public class LottoService {
     private Lottos lottos;
+    private WinningLotto winningLotto;
 
     private final NumberPickingStrategy numberPickingStrategy;
 
@@ -20,6 +21,13 @@ public class LottoService {
         validate(money);
         List<Lotto> createdLottos = createLottoByCount(toLottoCount(money));
         return toLottoInfos(createdLottos);
+    }
+
+    public WinningLotto saveWinningLotto(String numbers, String bonusNumber) {
+        winningLotto = new WinningLotto(
+                StringUtil.splitByCommas(numbers).stream().map(Integer::parseInt).toList(),
+                Integer.parseInt(bonusNumber));
+        return winningLotto;
     }
 
     private List<Lotto> createLottoByCount(int lottoCnt) {

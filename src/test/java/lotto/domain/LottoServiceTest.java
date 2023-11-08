@@ -31,4 +31,11 @@ public class LottoServiceTest {
                 .isThrownBy(() -> lottoService.createLottos("2222"))
                 .withMessage("로또 구입 금액은 1000원 단위여야 합니다.");
     }
+
+    @Test
+    @DisplayName("우승 로또 번호와 보너스 번호 저장")
+    void 우승_로또_번호와_보너스_번호_저장() {
+        assertThat(lottoService.saveWinningLotto("1,2,3,4,5,6", "7"))
+                .isEqualTo(new WinningLotto(List.of(1, 2, 3, 4, 5, 6), 7));
+    }
 }
