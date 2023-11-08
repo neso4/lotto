@@ -11,7 +11,7 @@ public class LottoController {
             try {
                 return supplier.get();
             } catch (IllegalArgumentException e) {
-                System.out.println("[ERROR] " + e.getMessage());
+                ExceptionHandler.handleException(e);
             }
         }
     }
