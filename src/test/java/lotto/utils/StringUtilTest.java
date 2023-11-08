@@ -25,4 +25,9 @@ class StringUtilTest {
     void coverWithBrackets() {
         assertThat(StringUtil.coverWithBrackets("1, 2, 3, 4, 5, 6")).isEqualTo("[1, 2, 3, 4, 5, 6]");
     }
+
+    @Test
+    void toKoreanWon() {
+        assertThat(StringUtil.toKoreanWon(1000L)).isEqualTo("1,000");
+    }
 }

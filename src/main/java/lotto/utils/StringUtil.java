@@ -1,7 +1,9 @@
 package lotto.utils;
 
+import java.text.NumberFormat;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Locale;
 
 public class StringUtil {
     public static int divideByOneThousand(String number) {
@@ -31,5 +33,10 @@ public class StringUtil {
         String HEADER = "[";
         String FOOTER = "]";
         return HEADER + string + FOOTER;
+    }
+
+    public static String toKoreanWon(Long value) {
+        NumberFormat koreanWonFormat = NumberFormat.getNumberInstance(Locale.KOREA);
+        return koreanWonFormat.format(value);
     }
 }
