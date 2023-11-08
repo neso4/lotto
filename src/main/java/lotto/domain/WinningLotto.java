@@ -4,29 +4,24 @@ import java.util.List;
 import java.util.Objects;
 
 public class WinningLotto {
+    private List<Integer> numbers;
+    private int bonusNumber;
 
-    private final List<Integer> numbers;
-    private final int bonusNumber;
-
-    public WinningLotto(List<Integer> numbers, int bonusNumber) {
+    public Boolean saveNumbers(List<Integer> numbers) {
         this.numbers = numbers;
+        return true;
+    }
+
+    public Boolean saveBonusNumber(int bonusNumber) {
         this.bonusNumber = bonusNumber;
+        return true;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-        WinningLotto that = (WinningLotto) o;
-        return bonusNumber == that.bonusNumber && Objects.equals(numbers, that.numbers);
+    public List<Integer> getNumbers() {
+        return numbers;
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(numbers, bonusNumber);
+    public int getBonusNumber() {
+        return bonusNumber;
     }
 }

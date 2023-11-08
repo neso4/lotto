@@ -2,32 +2,21 @@ package lotto.domain;
 
 import java.util.ArrayList;
 import java.util.List;
-import lotto.dto.LottoInfos;
 import lotto.utils.StringUtil;
 import lotto.utils.ValidationUtil;
 
-public class LottoService {
+public class LottoCreationService {
     private Lottos lottos;
-    private WinningLotto winningLotto;
-
     private final NumberPickingStrategy numberPickingStrategy;
 
-    public LottoService(NumberPickingStrategy numberPickingStrategy) {
+    public LottoCreationService(NumberPickingStrategy numberPickingStrategy) {
         this.numberPickingStrategy = numberPickingStrategy;
         this.lottos = new Lottos();
     }
 
-    public LottoInfos createLottos(String money) {
+    public List<Lotto> createLottos(String money) {
         validate(money);
-        List<Lotto> createdLottos = createLottoByCount(toLottoCount(money));
-        return toLottoInfos(createdLottos);
-    }
-
-    public WinningLotto saveWinningLotto(String numbers, String bonusNumber) {
-        winningLotto = new WinningLotto(
-                StringUtil.splitByCommas(numbers).stream().map(Integer::parseInt).toList(),
-                Integer.parseInt(bonusNumber));
-        return winningLotto;
+        return createLottoByCount(toLottoCount(money));
     }
 
     private List<Lotto> createLottoByCount(int lottoCnt) {
@@ -37,14 +26,6 @@ public class LottoService {
             createdLottos.add(createdLotto);
         }
         return createdLottos;
-    }
-
-    private LottoInfos toLottoInfos(List<Lotto> createdLottos) {
-        List<LottoInfo> createdLottoNums = new ArrayList<>();
-        for (Lotto lotto : createdLottos) {
-            createdLottoNums.add(new LottoInfo(lotto.getNumbers()));
-        }
-        return new LottoInfos(createdLottoNums);
     }
 
     private int toLottoCount(String money) {
