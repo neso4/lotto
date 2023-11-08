@@ -2,6 +2,7 @@ package lotto.domain;
 
 import java.util.Arrays;
 import java.util.List;
+import lotto.utils.StringUtil;
 
 public enum Rank {
     FIRST(6, 6, false, 2000000000L),
@@ -36,6 +37,10 @@ public enum Rank {
                 .map(rank -> rank.reward)
                 .mapToLong(i -> i)
                 .sum();
+    }
+
+    public String toMessage() {
+        return String.format("%d개 일치 (%s원)", correctCount, StringUtil.toKoreanWon(reward));
     }
 
     private boolean doesSatisfyBonusConditions(boolean doesLottoContainBonus) {

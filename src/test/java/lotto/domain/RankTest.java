@@ -20,4 +20,9 @@ class RankTest {
     void 총_상금_계산() {
         assertThat(Rank.calcReward(List.of(Rank.FIRST, Rank.SECOND, Rank.LAST))).isEqualTo(2030000000L);
     }
+
+    @Test
+    void toMessage() {
+        assertThat(Rank.FIFTH.toMessage()).isEqualTo("3개 일치 (5,000원)");
+    }
 }
