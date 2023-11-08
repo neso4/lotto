@@ -3,6 +3,7 @@ package lotto.domain;
 import java.util.ArrayList;
 import java.util.List;
 import lotto.domain.dto.LottoInfos;
+import lotto.utils.ValidationUtil;
 
 public class LottoService {
     private Lottos lottos;
@@ -15,6 +16,7 @@ public class LottoService {
     }
 
     public LottoInfos createLottos(String money) {
+        validate(money);
         List<Lotto> createdLottos = createLottoByCount(toLottoCount(money));
         return toLottoInfos(createdLottos);
     }
@@ -38,5 +40,10 @@ public class LottoService {
 
     private int toLottoCount(String money) {
         return Integer.parseInt(money) / 1000;
+    }
+
+    private void validate(String money) {
+        ValidationUtil.validateIsMoneyDigit(money);
+        ValidationUtil.validateIsMoneyThousandUnit(money);
     }
 }
