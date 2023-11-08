@@ -19,6 +19,10 @@ public class WinningLotto {
         return true;
     }
 
+    public Ranks calcRanksOfGivenLottos(Lottos lottos) {
+        return lottos.calRanksWithWinningNumbers(numbers, bonusNumber);
+    }
+
     public List<Integer> getNumbers() {
         return numbers;
     }

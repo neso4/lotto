@@ -9,9 +9,27 @@ import org.junit.jupiter.api.Test;
 
 class WinningLottoTest {
     private WinningLotto winningLotto;
+    private final List<Integer> ALL_CORRECT = List.of(1, 2, 3, 4, 5, 6);
+    private final List<Integer> FIVE_CORRECT_ONE_BONUS = List.of(1, 2, 3, 4, 5, 7);
+    private final List<Integer> ALL_WRONG = List.of(40, 41, 42, 43, 44, 45);
+    private final int BONUS_NUMBER = 7;
+    private final Lotto FIRST_PLACE = new Lotto(ALL_CORRECT);
+    private final Lotto SECOND_PLACE = new Lotto(FIVE_CORRECT_ONE_BONUS);
+    private final Lotto LAST_PLACE = new Lotto(ALL_WRONG);
     @BeforeEach
     void setUp() {
         winningLotto = new WinningLotto();
+    }
+
+    @Test
+    @DisplayName("로또_등수를_모아서_반환")
+    void 로또_등수를_모아서_반환() {
+        winningLotto.saveNumbers(ALL_CORRECT);
+        winningLotto.saveBonusNumber(BONUS_NUMBER);
+
+        Lottos lottos = new Lottos(List.of(FIRST_PLACE, SECOND_PLACE, LAST_PLACE));
+        assertThat(winningLotto.calcRanksOfGivenLottos(lottos))
+                .isEqualTo(new Ranks(List.of(Rank.FIRST, Rank.SECOND, Rank.LAST)));
     }
 
     @Test
