@@ -1,6 +1,7 @@
 package lotto.domain;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import lotto.controller.NumberPickingStrategy;
 
@@ -16,9 +17,15 @@ public class Lottos {
     }
 
     public Lotto createLotto(NumberPickingStrategy numberPickingStrategy) {
-        Lotto lotto = new Lotto(numberPickingStrategy.pickLottoNumbers());
+        Lotto lotto = new Lotto(makeLottoNumbers(numberPickingStrategy));
         lottos.add(lotto);
         return lotto;
+    }
+
+    private List<Integer> makeLottoNumbers(NumberPickingStrategy numberPickingStrategy) {
+        List<Integer> numbers = numberPickingStrategy.pickLottoNumbers();
+        Collections.sort(numbers);
+        return numbers;
     }
 
     public Ranks calRanksWithWinningNumbers(List<Integer> numbers, int bonusNumber) {
