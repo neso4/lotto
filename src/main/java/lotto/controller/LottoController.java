@@ -6,7 +6,7 @@ import lotto.domain.Lotto;
 import lotto.dto.LottoInfos;
 import lotto.service.LottoCreationService;
 import lotto.view.CreatedLottosView;
-import lotto.view.MoneyInputView;
+import lotto.view.InputView;
 
 public class LottoController {
     private LottoCreationService lottoCreationService;
@@ -21,7 +21,7 @@ public class LottoController {
 
     private LottoInfos createLottos() {
         return (LottoInfos) repeatUntilNoInternalException(
-                () -> lottoCreationService.createLottos(MoneyInputView.readMoneyInput())
+                () -> lottoCreationService.createLottos(InputView.readMoneyInput())
         );
     }
 
