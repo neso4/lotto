@@ -3,6 +3,7 @@ package lotto.domain;
 import static org.assertj.core.api.Assertions.*;
 
 import java.util.List;
+import lotto.dto.LottoInfos;
 import lotto.service.LottoCreationService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -18,9 +19,9 @@ public class LottoCreationServiceTest {
     @DisplayName("지불금액을_1000원으로_나눈_수만큼_로또_생성")
     @Test
     void 지불금액을_1000원으로_나눈_수만큼_로또_생성() {
-        List<Lotto> createdLottos = lottoCreationService.createLottos("2000");
+        LottoInfos createdLottoInfos = lottoCreationService.createLottos("2000");
 
-        assertThat(createdLottos.size()).isEqualTo(2);
+        assertThat(createdLottoInfos.getLottoInfos().size()).isEqualTo(2);
     }
 
     @Test

@@ -5,6 +5,8 @@ import java.util.List;
 import lotto.controller.NumberPickingStrategy;
 import lotto.domain.Lotto;
 import lotto.domain.Lottos;
+import lotto.dto.LottoInfo;
+import lotto.dto.LottoInfos;
 import lotto.utils.StringUtil;
 import lotto.utils.ValidationUtil;
 
@@ -17,11 +19,17 @@ public class LottoCreationService {
         this.lottos = new Lottos();
     }
 
-    public List<Lotto> createLottos(String money) {
+    public LottoInfos createLottos(String money) {
         validate(money);
-        return createLottoByCount(toLottoCount(money));
+        return toLottoInfos(createLottoByCount(toLottoCount(money)));
     }
 
+    private LottoInfos toLottoInfos(List<Lotto> createdLottos) {
+        return new LottoInfos(createdLottos.stream()
+                .map(lotto -> new LottoInfo(lotto.getNumbers()))
+                .toList()
+        );
+    }
     private List<Lotto> createLottoByCount(int lottoCnt) {
         List<Lotto> createdLottos = new ArrayList<>();
         for (int i = 0; i < lottoCnt; i++) {
