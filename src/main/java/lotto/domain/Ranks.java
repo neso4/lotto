@@ -14,6 +14,10 @@ public class Ranks {
                 .toList();
     }
 
+    public Reward toTotalReward() {
+        return new Reward(Rank.calcReward(ranks));
+    }
+
     public List<Rank> getRanks() {
         return ranks;
     }

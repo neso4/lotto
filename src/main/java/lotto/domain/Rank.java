@@ -1,6 +1,7 @@
 package lotto.domain;
 
 import java.util.Arrays;
+import java.util.List;
 
 public enum Rank {
     FIRST(6, 6, false, 2000000000L),
@@ -28,6 +29,13 @@ public enum Rank {
                 .filter(rank -> rank.doesSatisfyBonusConditions(doesLottoContainBonus))
                 .findAny()
                 .orElse(LAST);
+    }
+
+    public static Long calcReward(List<Rank> ranks) {
+        return  ranks.stream()
+                .map(rank -> rank.reward)
+                .mapToLong(i -> i)
+                .sum();
     }
 
     private boolean doesSatisfyBonusConditions(boolean doesLottoContainBonus) {
