@@ -2,6 +2,7 @@ package lotto.domain;
 
 import static org.assertj.core.api.Assertions.*;
 
+import java.util.Arrays;
 import java.util.List;
 import lotto.dto.LottoInfos;
 import lotto.service.LottoCreationService;
@@ -13,7 +14,7 @@ public class LottoCreationServiceTest {
     private LottoCreationService lottoCreationService;
     @BeforeEach
     void beforeEach() {
-        lottoCreationService = new LottoCreationService(() -> List.of(1, 2, 3, 4, 5, 6));
+        lottoCreationService = new LottoCreationService(() -> Arrays.asList(1, 2, 3, 4, 5, 6));
     }
 
     @DisplayName("지불금액을_1000원으로_나눈_수만큼_로또_생성")

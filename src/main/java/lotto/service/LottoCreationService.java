@@ -47,4 +47,8 @@ public class LottoCreationService {
         ValidationUtil.validateIsMoneyDigit(money);
         ValidationUtil.validateIsMoneyThousandUnit(money);
     }
+
+    public Lottos getLottos() {
+        return lottos;
+    }
 }

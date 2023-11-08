@@ -40,4 +40,8 @@ public class WinningLottoRegisterService {
     private int parseBonusNumber(String bonusNumber) {
         return ParseUtil.parseNumber(bonusNumber);
     }
+
+    public WinningLotto getWinningLotto() {
+        return winningLotto;
+    }
 }
