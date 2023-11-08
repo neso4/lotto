@@ -2,6 +2,7 @@ package lotto.domain;
 
 import java.util.ArrayList;
 import java.util.List;
+import lotto.NumberPickingStrategy;
 
 public class Lottos {
     private List<Lotto> lottos;

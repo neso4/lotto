@@ -1,7 +1,6 @@
 package lotto.dto;
 
 import java.util.List;
-import lotto.domain.LottoInfo;
 
 public class LottoInfos {
     private final List<LottoInfo> lottoInfos;
