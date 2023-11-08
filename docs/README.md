@@ -6,7 +6,7 @@
     - [ ] 세부 기능
       - [X] 1-45 사이 서로 다른 랜덤한 숫자들을 생성한다. (테스팅 어려움! / 상위계층에서 전략을 주입한다.)
       - [X] 숫자들로 한 개의 로또를 생성한다. Input: 숫자 리스트 Output: 로또 객체
-      - [ ] 생성할 숫자만큼 로또를 생성한다. Input: 로또 생성 숫자, 숫자 생성 전략 Output: 로또 리스트
+      - [X] 생성할 숫자만큼 로또를 생성한다. Input: 로또 생성 숫자, 숫자 생성 전략 Output: 로또 리스트
       - [ ] 구입 금액이 1000원으로 나누어 떨어지면 로또 생성 숫자 아니면 `IllegalArgumentException` 예외를 던진다. Input: 금액 Output: 로또 생성 숫자 or `IllegalArgumentException`
       - [ ] 숫자들이 1-45 사이 숫자가 아니면 `IllegalArgumentException` 예외를 던진다
       - [ ] 숫자들 중 중복된 숫자가 있으면 `IllegalArgumentException` 예외를 던진다
