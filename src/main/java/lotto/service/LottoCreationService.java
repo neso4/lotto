@@ -12,6 +12,7 @@ import lotto.utils.ValidationUtil;
 
 public class LottoCreationService {
     private Lottos lottos;
+    private Money totalMoney;
     private final NumberPickingStrategy numberPickingStrategy;
 
     public LottoCreationService(NumberPickingStrategy numberPickingStrategy) {
@@ -21,6 +22,7 @@ public class LottoCreationService {
 
     public LottoInfos createLottos(String money) {
         validate(money);
+        totalMoney = new Money(Integer.parseInt(money));
         return toLottoInfos(createLottoByCount(toLottoCount(money)));
     }
 
@@ -50,5 +52,9 @@ public class LottoCreationService {
 
     public Lottos getLottos() {
         return lottos;
+    }
+
+    public Money getTotalMoney() {
+        return totalMoney;
     }
 }
