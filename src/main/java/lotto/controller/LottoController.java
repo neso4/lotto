@@ -1,8 +1,6 @@
 package lotto.controller;
 
-import java.util.List;
 import java.util.function.Supplier;
-import lotto.domain.Lotto;
 import lotto.domain.Ranks;
 import lotto.domain.WinningLotto;
 import lotto.dto.LottoInfos;
@@ -29,7 +27,9 @@ public class LottoController {
 
         WinningLotto winningLotto = winningLottoRegisterService.getWinningLotto();
         Ranks ranks = winningLotto.calcRanksOfGivenLottos(lottoCreationService.getLottos());
-        WinningStatusView.viewWinningStatus(ranks.getRankCountPairs(), ranks.toTotalReward().calcProfitRate(lottoCreationService.getTotalMoney().getAmount()));
+        WinningStatusView.viewWinningStatus(
+                ranks.getRankCountPairs(),
+                ranks.toTotalReward().calcProfitRate(lottoCreationService.getTotalMoney().getAmount()));
 
     }
 
