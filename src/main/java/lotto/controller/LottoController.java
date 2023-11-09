@@ -22,14 +22,15 @@ public class LottoController {
     }
 
     public void run() {
-        CreatedLottosView.viewCreatedLottos(createLottos());
+        String money = InputView.readMoneyInput();
+        CreatedLottosView.viewCreatedLottos(createLottos(money));
 
         registerWinningLottoNumbers();
         registerBonusNumber();
 
         WinningLotto winningLotto = winningLottoRegisterService.getWinningLotto();
         Ranks ranks = winningLotto.calcRanksOfGivenLottos(lottoCreationService.getLottos());
-        WinningStatusView.viewWinningStatus(ranks.getRankCountPairs());
+        WinningStatusView.viewWinningStatus(ranks.getRankCountPairs(), ranks.toTotalReward().calcProfitRate(Long.parseLong(money)));
 
     }
 
@@ -43,9 +44,9 @@ public class LottoController {
                 () -> winningLottoRegisterService.registerNumbers(InputView.readNumbersInput()));
     }
 
-    private LottoInfos createLottos() {
+    private LottoInfos createLottos(String money) {
         return (LottoInfos) repeatUntilNoInternalException(
-                () -> lottoCreationService.createLottos(InputView.readMoneyInput())
+                () -> lottoCreationService.createLottos(money)
         );
     }
 
