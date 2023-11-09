@@ -18,18 +18,19 @@ public class LottoController {
 
     public LottoController() {
         this.lottoCreationService = new LottoCreationService(new NumberPickingStrategyImpl());
+        this.winningLottoRegisterService = new WinningLottoRegisterService();
     }
 
     public void run() {
         CreatedLottosView.viewCreatedLottos(createLottos());
 
-        winningLottoRegisterService.registerNumbers(InputView.readNumbersInput());
         registerWinningLottoNumbers();
         registerBonusNumber();
 
         WinningLotto winningLotto = winningLottoRegisterService.getWinningLotto();
         Ranks ranks = winningLotto.calcRanksOfGivenLottos(lottoCreationService.getLottos());
         WinningStatusView.viewWinningStatus(ranks.getRankCountPairs());
+
     }
 
     private WinningLotto registerBonusNumber() {
